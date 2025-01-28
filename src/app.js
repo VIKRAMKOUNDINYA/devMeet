@@ -2,26 +2,36 @@ const express=require("express");
 const app=express();
 const {adminAuth,userAuth}=require("../middlewares/auth");
 
-app.use("/admin",adminAuth
-)
+// app.use("/admin",adminAuth
+// )
 
-// app.use("/",(req,res,next)=>{
-//     // res.send("Heyy");
-//     next();
-// })
-app.get("/admin/dat",(req,res,next)=>{
-    res.send("Data sent")
-    // next();
+app.use("/",(err,req,res,next)=>{
+    if(err){
+        res.status(500).send("Something went wrong")
+    }
 })
-// app.get("/dat",(req,res)=>{
-//     res.send("Hey")
-// })
-// // app.get("",{
+app.get("/gg",(req,res,next)=>{
+    try{
+        throw new Error("ERROR")
+    }
+    catch(err){
+        res.status(500).send("Contactsupprot")
+    }
+})
 
+// app.get("/admin/dat",(req,res,next)=>{
+//     res.send("Data sent")
+//     // next();
+// })
+// // app.get("/dat",(req,res)=>{
+// //     res.send("Hey")
 // // })
-app.get("/user/data",userAuth,(req,res)=>{
-    res.send("User Data")
-})
+// // // app.get("",{
+
+// // // })
+// app.get("/user/data",userAuth,(req,res)=>{
+//     res.send("User Data")
+// })
 app.listen(8081,()=>{
     console.log("server running on port 8080")
 });
