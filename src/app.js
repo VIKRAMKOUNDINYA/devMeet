@@ -1,17 +1,31 @@
 const express=require("express");
 const app=express();
+const {adminAuth,userAuth}=require("../middlewares/auth");
 
-app.use((req,res,next)=>{
-next()
-// res.send("Hello from the server")
-},(req,res,next)=>{
-    // res.send("Yo")
-    next();
+app.use("/admin",adminAuth
+)
+
+// app.use("/",(req,res,next)=>{
+//     // res.send("Heyy");
+//     next();
+// })
+app.get("/admin/dat",(req,res,next)=>{
+    res.send("Data sent")
+    // next();
 })
+// app.get("/dat",(req,res)=>{
+//     res.send("Hey")
+// })
+// // app.get("",{
 
+// // })
+app.get("/user/data",userAuth,(req,res)=>{
+    res.send("User Data")
+})
 app.listen(8081,()=>{
     console.log("server running on port 8080")
 });
+
 
 // app.use("/hey",(req,res)=>{
 //     res.send("Hey");
