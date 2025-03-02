@@ -11,4 +11,16 @@ const validationSignUpData=(req)=>{
         throw new Error("Please enter a strong password");
     }
 }
-module.exports={validationSignUpData}
+
+const validateEditProfileData=async(req,res,next)=>{
+    try{
+        const ALLOWED_UPDATES=["photoUrl","about","gender","age","skills","firstName"]
+        Object.keys(req.body).every((field)=>
+        ALLOWED_UPDATES.includes(field)
+        )
+    }
+    catch(err){
+        res.send(err);
+    }
+}
+module.exports={validationSignUpData,validateEditProfileData}
