@@ -15,7 +15,7 @@ profileRouter.get('/profile',userAuth,async(req,res)=>{
     }
 })
 
-profileRouter.patch("/profile/edit",userAuth,async (req,res)=> {
+profileRouter.post("/profile/edit",userAuth,async (req,res)=> {
      console.log(req.body)
     try{
         
@@ -36,7 +36,7 @@ profileRouter.patch("/profile/edit",userAuth,async (req,res)=> {
         res.send("Data Updated successfully")
     }
     catch(err){
-        res.send(err.message)
+        res.status(400).send(err.message)
     }   
 })
 
