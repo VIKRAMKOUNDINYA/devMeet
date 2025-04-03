@@ -44,7 +44,7 @@ const userSchema=new mongoose.Schema({
     },
     photoUrl:{
         type:String,
-        default:"https://oldweb.brur.ac.bd/wp-content/uploads/2019/03/male.jpg"
+        default:"https://geographyandyou.com/images/user-profile.png"
     },
     about:{
         type:String,
